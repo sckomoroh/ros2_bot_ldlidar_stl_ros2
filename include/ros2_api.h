@@ -2,7 +2,7 @@
  * @file ros_api.h
  * @author LDRobot (support@ldrobot.com)
  * @brief  ros lib interface
- *         This code is only applicable to LDROBOT LiDAR products 
+ *         This code is only applicable to LDROBOT LiDAR products
  * sold by Shenzhen LDROBOT Co., LTD
  * @version 0.1
  * @date 2021-10-28
@@ -25,16 +25,16 @@
 #include <sensor_msgs/msg/laser_scan.hpp>
 #include <string>
 
-struct LaserScanSetting
-{
-  std::string frame_id;
-  bool laser_scan_dir;
-  bool enable_angle_crop_func;
-  double angle_crop_min;
-  double angle_crop_max;
+struct LaserScanSetting {
+    std::string frame_id;
+    bool laser_scan_dir;
+    bool enable_angle_crop_func;
+    double angle_crop_min;
+    double angle_crop_max;
+    uint16_t frequency;
 };
 
-#endif //__ROS_API_H__
+#endif  //__ROS_API_H__
 
 /********************* (C) COPYRIGHT SHENZHEN LDROBOT CO., LTD *******END OF
  * FILE ********/
