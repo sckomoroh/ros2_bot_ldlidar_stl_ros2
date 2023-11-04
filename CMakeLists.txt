@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.5)
-project(ldlidar_stl_ros2)
+project(lidar_driver_node)
 
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
@@ -49,7 +49,7 @@ file(GLOB  LDLIDAR_DRI_LOGGER ${CMAKE_CURRENT_SOURCE_DIR}/ldlidar_driver/src/log
 file(GLOB  LDLIDAR_DRI_NETWORK ${CMAKE_CURRENT_SOURCE_DIR}/ldlidar_driver/src/networkcom/*.cpp)
 file(GLOB  LDLIDAR_DRI_SERIAL ${CMAKE_CURRENT_SOURCE_DIR}/ldlidar_driver/src/serialcom/*.cpp)
 
-add_executable(${PROJECT_NAME}_node  
+add_executable(${PROJECT_NAME}
   ${CMAKE_CURRENT_SOURCE_DIR}/src/demo.cpp 
   ${LDLIDAR_DRI_CORE} 
   ${LDLIDAR_DRI_DATARPC} 
@@ -58,11 +58,11 @@ add_executable(${PROJECT_NAME}_node
   ${LDLIDAR_DRI_NETWORK} 
   ${LDLIDAR_DRI_SERIAL}
 )
-ament_target_dependencies(${PROJECT_NAME}_node rclcpp sensor_msgs)
-target_link_libraries(${PROJECT_NAME}_node pthread)
+ament_target_dependencies(${PROJECT_NAME} rclcpp sensor_msgs)
+target_link_libraries(${PROJECT_NAME} pthread)
 
 # Install
-install(TARGETS ${PROJECT_NAME}_node
+install(TARGETS ${PROJECT_NAME}
   DESTINATION lib/${PROJECT_NAME}
 )
 

@@ -27,14 +27,13 @@ Parameter Description:
 def generate_launch_description():
     port = LaunchConfiguration("port")
     port_cmd = DeclareLaunchArgument(
-        name='port',
-        default_value="/dev/ttyUSB0",
-        description='Lidar port.')
+        name="port", default_value="/dev/ldlidar", description="Lidar port."
+    )
 
     # LDROBOT LiDAR publisher node
     ldlidar_node = Node(
-        package="ldlidar_stl_ros2",
-        executable="ldlidar_stl_ros2_node",
+        package="lidar_driver_node",
+        executable="lidar_driver_node",
         name="LD19",
         output="screen",
         parameters=[
@@ -56,7 +55,24 @@ def generate_launch_description():
         package="tf2_ros",
         executable="static_transform_publisher",
         name="base_link_to_base_laser_ld19",
-        arguments=["0", "0", "0.18", "1.5708", "0", "0", "base_link", "lidar_link"],
+        arguments=[
+            "--x",
+            "0.0",
+            "--y",
+            "0.0",
+            "--z",
+            "0.18",
+            "--roll",
+            "0.0",
+            "--pitch",
+            "0.0",
+            "--yaw",
+            "1.5708",
+            "--frame-id",
+            "base_link",
+            "--child-frame-id",
+            "lidar_link",
+        ],
     )
 
     # Define LaunchDescription variable
